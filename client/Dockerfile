@@ -7,4 +7,3 @@ FROM nginx:latest
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build_client /usr/src/app/client/dist/client /usr/share/nginx/html
 EXPOSE 4200
-
