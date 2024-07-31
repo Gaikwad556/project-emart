@@ -1,6 +1,3 @@
-output "ansible_public_ip" {
-  value = aws_instance.Ansible_Main.private_ip
-}
 
 output "docker_public_ip" {
   value = aws_instance.Docker_Main.private_ip
