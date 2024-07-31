@@ -4,7 +4,7 @@ COPY . ./
 RUN apt update && apt install maven -y
 RUN mvn install
 
-FROM openjdk:11 
+FROM openjdk:8 
 WORKDIR /usr/src/app
 COPY --from=build_java /usr/src/app/java/target/*.jar ./java-app.jar
 EXPOSE 9000
