@@ -1,7 +1,7 @@
 FROM openjdk:11 AS build_java
-WORKDIR /usr/src/app/
-COPY . /usr/src/app/
+WORKDIR /usr/src/app
 RUN apt update && apt install maven -y
+COPY . /usr/src/app/
 RUN mvn install
 
 FROM openjdk:11
