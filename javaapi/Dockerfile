@@ -2,7 +2,7 @@ FROM openjdk:11 as build_java
 WORKDIR /usr/src/app
 COPY . ./java
 RUN apt update && apt install maven -y
-RUN cd ./java/ && mvn install
+RUN cd /usr/src/app/java/ && mvn install
 
 FROM openjdk:11 
 WORKDIR /usr/src/app
