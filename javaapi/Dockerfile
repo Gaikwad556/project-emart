@@ -1,10 +1,10 @@
-FROM openjdk-11 as build_java
+FROM openjdk:11 as build_java
 WORKDIR /usr/src/app
 COPY . ./java
 RUN apt update && apt install maven -y
 RUN cd ./java/ && mvn install
 
-FROM openjdk-11 
+FROM openjdk:11 
 WORKDIR /usr/src/app
 COPY --from=build_java /usr/src/app/java/*.jar ./java-app.jar
 EXPOSE 9000
