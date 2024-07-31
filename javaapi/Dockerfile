@@ -1,6 +1,6 @@
 FROM openjdk:8 AS build_java
 WORKDIR /usr/src/app/
-COPY . ./
+COPY . /usr/src/app/
 RUN apt update && apt install maven -y
 RUN mvn install
 
