@@ -1,4 +1,4 @@
-FROM node:18 AS build_client
+FROM node:14 AS build_client
 WORKDIR /usr/src/app
 COPY . ./client 
 RUN cd /usr/src/app/client/ && npm install && npm run build --prod
