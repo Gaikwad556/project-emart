@@ -6,6 +6,6 @@ RUN mvn install -DskipTests
 
 FROM openjdk:11
 WORKDIR /usr/src/app/
-COPY --from=build_java /usr/src/app/java/target/*.jar ./java-app.jar
+COPY --from=build_java /usr/src/app/target/*.jar ./java-app.jar
 EXPOSE 9000
 CMD ["java","-jar","java-app.jar"]
