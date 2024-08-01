@@ -43,7 +43,7 @@ services:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
   
   dbsql:
-    image: mysql:9
+    image: mysql:8.0.22
     ports:
       - "3306:3306"
     container_name: dbsql-container
@@ -53,7 +53,7 @@ services:
       - MYSQL_DATABASE=books
 
   dbmongo:
-    image: mongo:5
+    image: mongo:5.4.8
     ports:
       - "27017:27017"
     container_name: dbmongo-container
