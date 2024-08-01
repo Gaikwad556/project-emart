@@ -5,7 +5,7 @@ services:
       context: client/
     ports:
       - "4200:4200"
-    image: ssgaikwad/emartclient
+    # image: ssgaikwad/emartclient
     container_name: client-container
     restart: always
     depends_on:
@@ -18,7 +18,7 @@ services:
     ports:
       - "9000:9000"
     container_name: javaapi-container
-    image: ssgaikwad/emartwebapi
+    # image: ssgaikwad/emartwebapi
     restart: always
     depends_on:
       - emartdb
@@ -30,13 +30,15 @@ services:
     ports:
       - "5000:5000"
     container_name: nodeapi-container
-    image: ssgaikwad/emartapi
+    # image: ssgaikwad/emartapi
     restart: always
     depends_on:
       - emongo
   
   nginx:
-    image: nginx
+    build:
+      context: nginx/
+    image: ssgaikwad/emartnginx
     ports:
       - "80:80"
     container_name: emartnginx
