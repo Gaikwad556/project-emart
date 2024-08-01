@@ -11,15 +11,15 @@ services:
       # - webapi
       - api
   
-  # webapi:
-  #   build:
-  #     context: javaapi/
-  #   ports:
-  #     - "9000:9000"
-  #   container_name: javaapi-container
-  #   restart: always
-  #   depends_on:
-  #     - emartdb
+  webapi:
+    build:
+      context: javaapi/
+    ports:
+      - "9000:9000"
+    container_name: javaapi-container
+    restart: always
+    depends_on:
+      - emartdb
       
   
   api:
