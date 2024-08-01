@@ -1,25 +1,25 @@
 version: '3.8'
 services:
-  # client:
-  #   build:
-  #     context: client/
-  #   ports:
-  #     - "4200:4200"
-  #   container_name: client-container
-  #   restart: always
-  #   depends_on:
-  #     - webapi
-  #     - api
-  
-  webapi:
+  client:
     build:
-      context: javaapi/
+      context: client/
     ports:
-      - "9000:9000"
-    container_name: javaapi-container
+      - "4200:4200"
+    container_name: client-container
     restart: always
     depends_on:
-      - emartdb
+      - webapi
+      - api
+  
+  # webapi:
+  #   build:
+  #     context: javaapi/
+  #   ports:
+  #     - "9000:9000"
+  #   container_name: javaapi-container
+  #   restart: always
+  #   depends_on:
+  #     - emartdb
       
   
   api:
