@@ -25,12 +25,12 @@ services:
       
   
   api:
+    image: nginx
     build:
       context:  nodeapi/
     ports:
       - "5000:5000"
     container_name: ssgaikwad/emartapi
-     
     restart: always
     depends_on:
       - emongo
