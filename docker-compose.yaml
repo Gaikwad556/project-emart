@@ -42,7 +42,7 @@ services:
     container_name: emartnginx
     restart: always
     volumes:
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - nginxvol:/etc/nginx/conf.d/default.conf
   
   emartdb:
     image: mysql:8
@@ -62,3 +62,6 @@ services:
     restart: always
     environment:
       - MONGO_INITDB_DATABASE=epoc
+
+volumes:
+  nginxvol: 
