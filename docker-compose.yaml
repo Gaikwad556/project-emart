@@ -20,7 +20,7 @@ services:
     restart: always
     depends_on:
       - dbsql
-      - nodeapi
+      
   
   nodeapi:
     build:
