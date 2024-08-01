@@ -31,7 +31,6 @@ services:
     restart: always
     depends_on:
       - dbmongo
-      - nginx
   
   nginx:
     image: nginx:latest
