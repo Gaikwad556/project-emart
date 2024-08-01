@@ -11,7 +11,7 @@ services:
       - javaapi
       - nodeapi
   
-  javaapi:
+  webapi:
     build:
       context: javaapi/
     ports:
@@ -22,7 +22,7 @@ services:
       - emartdb
       
   
-  nodeapi:
+  api:
     build:
       context:  nodeapi/
     ports:
