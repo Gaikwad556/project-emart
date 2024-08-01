@@ -25,7 +25,6 @@ services:
       
   
   api:
-    image: nginx
     build:
       context:  nodeapi/
     ports:
@@ -36,6 +35,7 @@ services:
       - emongo
   
   nginx:
+    image: nginx
     ports:
       - "80:80"
     container_name: ssgaikwad/emartnginx
