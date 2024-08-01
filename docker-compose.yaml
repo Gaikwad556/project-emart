@@ -33,7 +33,7 @@ services:
       - dbmongo
   
   nginx:
-    image: nginx:latest
+    image: nginx
     ports:
       - "80:80"
     container_name: nginx-container
