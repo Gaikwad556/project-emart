@@ -8,8 +8,8 @@ services:
     container_name: client-container
     restart: always
     depends_on:
-      - javaapi
-      - nodeapi
+      - webapi
+      - api
   
   webapi:
     build:
