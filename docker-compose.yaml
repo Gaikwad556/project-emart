@@ -6,6 +6,7 @@ services:
     ports:
       - "4200:4200"
     container_name: client-container
+    restart: always
     depends_on:
       - javaapi
       - nodeapi
@@ -16,6 +17,7 @@ services:
     ports:
       - "9000:9000"
     container_name: javaapi-container
+    restart: always
     depends_on:
       - dbsql
       - nodeapi
@@ -26,6 +28,7 @@ services:
     ports:
       - "5000:5000"
     container_name: nodeapi-container
+    restart: always
     depends_on:
       - dbmongo
       - nginx
@@ -35,6 +38,7 @@ services:
     ports:
       - "80:80"
     container_name: nginx-container
+    restart: always
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
   
@@ -43,6 +47,7 @@ services:
     ports:
       - "3306:3306"
     container_name: dbsql-container
+    restart: always
     environment:
       - MYSQL_ROOT_PASSWORD:emartdbpass
       - MYSQL_DATABASE=books
@@ -52,5 +57,6 @@ services:
     ports:
       - "27017:27017"
     container_name: dbmongo-container
+    restart: always
     environment:
       - MONGO_INITDB_DATABASE=epoc
