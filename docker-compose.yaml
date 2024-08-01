@@ -48,7 +48,7 @@ services:
     container_name: dbsql-container
     restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD:emartdbpass
+      - MYSQL_ROOT_PASSWORD=emartdbpass
       - MYSQL_DATABASE=books
 
   dbmongo:
