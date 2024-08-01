@@ -10,7 +10,7 @@ resource "aws_instance" "Docker_Main" {
   availability_zone = "us-west-1c"
   security_groups   = [aws_security_group.docker_security.id]
   root_block_device {
-    volume_size = 10
+    volume_size = 12
   }
   subnet_id = aws_subnet.pub-sub-2.id
 
