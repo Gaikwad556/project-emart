@@ -45,17 +45,17 @@ services:
     image: mysql:8
     ports:
       - "3306:3306"
-    container_name: dbsql-container
+    container_name: emartdb-container
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=emartdbpass
       - MYSQL_DATABASE=books
 
-  dbmongo:
+  emongo:
     image: mongo:5
     ports:
       - "27017:27017"
-    container_name: dbmongo-container
+    container_name: emongo-container
     restart: always
     environment:
       - MONGO_INITDB_DATABASE=epoc
