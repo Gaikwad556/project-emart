@@ -1,11 +1,11 @@
 version: '3.8'
 services:
   client:
-    build:
-      context: client/
+    # build:
+    #   context: client/
     ports:
       - "4200:4200"
-    # image: ssgaikwad/emartclient
+    image: ssgaikwad/emartclient
     container_name: client-container
     restart: always
     depends_on:
@@ -13,31 +13,31 @@ services:
       - api
   
   webapi:
-    build:
-      context: javaapi/
+    # build:
+    #   context: javaapi/
     ports:
       - "9000:9000"
     container_name: javaapi-container
-    # image: ssgaikwad/emartwebapi
+    image: ssgaikwad/emartwebapi
     restart: always
     depends_on:
       - emartdb
       
   
   api:
-    build:
-      context:  nodeapi/
+    # build:
+    #   context:  nodeapi/
     ports:
       - "5000:5000"
     container_name: nodeapi-container
-    # image: ssgaikwad/emartapi
+    image: ssgaikwad/emartapi
     restart: always
     depends_on:
       - emongo
   
   nginx:
-    build:
-      context: nginx/
+    # build:
+    #   context: nginx/
     image: ssgaikwad/emartnginx
     ports:
       - "80:80"
