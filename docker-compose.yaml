@@ -8,7 +8,7 @@ services:
     container_name: client-container
     restart: always
     depends_on:
-      - webapi
+      # - webapi
       - api
   
   # webapi:
