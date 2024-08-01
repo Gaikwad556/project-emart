@@ -53,7 +53,7 @@ services:
     container_name: emartdb-container
     restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=${MY_DB_PASS}
+      - MYSQL_ROOT_PASSWORD=${MY_DB_PASS} # write database password in .env file
       - MYSQL_DATABASE=books
 
   emongo:
