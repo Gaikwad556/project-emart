@@ -19,7 +19,7 @@ services:
     container_name: javaapi-container
     restart: always
     depends_on:
-      - dbsql
+      - emartdb
       
   
   nodeapi:
@@ -30,7 +30,7 @@ services:
     container_name: nodeapi-container
     restart: always
     depends_on:
-      - dbmongo
+      - emongo
   
   nginx:
     image: nginx
