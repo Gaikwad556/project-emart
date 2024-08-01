@@ -1,0 +1,56 @@
+version: '3.8'
+services:
+  client:
+    build:
+      context: client/
+    ports:
+      - "4200:4200"
+    container_name: client-container
+    depends_on:
+      - javaapi
+      - nodeapi
+  
+  javaapi:
+    build:
+      context: javaapi/
+    ports:
+      - "9000:9000"
+    container_name: javaapi-container
+    depends_on:
+      - dbsql
+      - nodeapi
+  
+  nodeapi:
+    build:
+      context:  nodeapi/
+    ports:
+      - "5000:5000"
+    container_name: nodeapi-container
+    depends_on:
+      - dbmongo
+      - nginx
+  
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    container_name: nginx-container
+    volumes:
+      - nginx/default.conf:/etc/nginx/conf.d/default.conf
+  
+  dbsql:
+    image: mysql:9
+    ports:
+      - "3306:3306"
+    container_name: dbsql-container
+    environment:
+      - MYSQL_ROOT_PASSWORD:emartdbpass
+      - MYSQL_DATABASE=books
+
+  dbmongo:
+    image: mongo:5
+    ports:
+      - "27017:27017"
+    container_name: dbmongo-container
+    environment:
+      - MONGO_INITDB_DATABASE=epoc
