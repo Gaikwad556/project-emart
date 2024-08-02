@@ -9,4 +9,4 @@ spec:
     - port: 80
       targetPort: nginx-port
       protocol: TCP
-  type: ClusterIP
+  type: LoadBalancer
