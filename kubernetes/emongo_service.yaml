@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: emongo
+spec:
+  selector:
+    app: emongo
+  ports:
+    - port: 27017
+      targetPort: emongo-port
+      protocol: TCP
+  type: ClusterIP

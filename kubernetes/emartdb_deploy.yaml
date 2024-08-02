@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: emartdb
+spec:
+  selector:
+    matchLabels:
+      app: emartdb
+  template:
+    metadata:
+      labels:
+        app: emartdb
+    spec:
+      containers:
+      - name: emartdb
+        image: mysql:8
+        ports:
+          - containerPort: 3306
+            name: emartdb-port
+
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: db_pass
+                name: mysecret
+          - name: MYSQL_DATABASE
+            value: books

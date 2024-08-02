@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: emongo
+spec:
+  selector:
+    matchLabels:
+      app: emongo
+  template:
+    metadata:
+      labels:
+        app: emongo
+    spec:
+      containers:
+      - name: emongo
+        image: mongo:5
+        ports:
+          - containerPort: 27017
+            name: emongo-port
+
+        env:
+          - name: MONGO_INITDB_DATABASE
+            value: epoc

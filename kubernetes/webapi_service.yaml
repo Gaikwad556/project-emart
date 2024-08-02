@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapi
+spec:
+  selector:
+    app: webapi
+  ports:
+    - port: 9000
+      targetPort: webapi-port
+      protocol: TCP
+  type: ClusterIP
