@@ -5,7 +5,7 @@ resource "aws_key_pair" "docker_key" {
 
 resource "aws_instance" "Docker_Main" {
   ami               = var.AMI
-  instance_type     = "t2.small"
+  instance_type     = "t2.micro"
   key_name          = aws_key_pair.docker_key.key_name
   availability_zone = "us-west-1c"
   security_groups   = [aws_security_group.docker_security.id]
