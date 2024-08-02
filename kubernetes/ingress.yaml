@@ -14,7 +14,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: client
+            name: webapi
             port:
               number: 80
 
