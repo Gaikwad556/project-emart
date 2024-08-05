@@ -41,11 +41,11 @@ pipeline {
             }
         }
 
-        // stage ("helm install"){
-        //     agent {label 'KOPS'}
-        //     steps {              
-        //         sh "helm upgrade --install --force emart-stack helm/emartcharts --namespace prod --set appimage=$image_name:$BUILD_NUMBER"             
-        //     }
-        // }
+        stage ("helm install"){
+            agent {label 'KOPS'}
+            steps {              
+                sh "helm upgrade --install --force emart-stack helm/emartcharts --namespace prod --set appimage=${registry_url}:${BUILD_NUMBER}"             
+            }
+        }
     }
 }
