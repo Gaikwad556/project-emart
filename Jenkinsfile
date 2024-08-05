@@ -43,7 +43,7 @@ pipeline {
         stage ("helm install"){
             agent {label 'KOPS'}
             steps {              
-                sh "helm upgrade --install --force vprofile-stack helm/emartchart --namespace prod --set appimage=$image_name:$BUILD_NUMBER"             
+                sh "helm upgrade --install --force emart-stack helm/emartcharts --namespace prod --set appimage=$image_name:$BUILD_NUMBER"             
             }
         }
     }
