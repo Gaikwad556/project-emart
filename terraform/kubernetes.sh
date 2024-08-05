@@ -13,7 +13,9 @@ tar -xvzf kubeseal-0.18.1-linux-amd64.tar.gz
 sudo mv kubeseal /usr/local/bin/
 sudo chmod +x /usr/local/bin/kubeseal
 
-# add label to node according to db_deploy file
+# add label to node according to db_deploy file and install openjdk 11
+sudo apt update
+sudo apt install openjdk-11-jdk -y
 
 
 
