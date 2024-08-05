@@ -21,6 +21,7 @@ pipeline {
                 git branch:'main',url:'https://github.com/Gaikwad556/project-emart.git'
             }
         }
+        
         stage ("docker build image "){
             steps {
                 script {
