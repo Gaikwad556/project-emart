@@ -27,12 +27,7 @@ pipeline {
                 sh "cd client && rm -rf node_modules && npm cache clean --force && npm install"
             }
         } 
-
-        stage ("git clone") {
-            steps {
-                git branch: 'main', url:'https://github.com/Gaikwad556/project-emart.git'
-            }
-        }
+        
         stage (" mvn install") {
             steps {
                 sh " cd javaapi && mvn install -DskipTests"
