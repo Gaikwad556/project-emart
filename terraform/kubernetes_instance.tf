@@ -5,7 +5,7 @@ resource "aws_key_pair" "kubernetes_key" {
 
 resource "aws_instance" "Kubernetes_Main" {
   ami               = var.AMI
-  instance_type     = "t2.small"
+  instance_type     = "t2.micro"
   key_name          = aws_key_pair.kubernetes_key.key_name
   availability_zone = "us-west-1b"
   security_groups   = [aws_security_group.kubernetes_security.id]

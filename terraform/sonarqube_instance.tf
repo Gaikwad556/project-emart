@@ -5,7 +5,7 @@ resource "aws_key_pair" "sonarqube_key" {
 
 resource "aws_instance" "Sonarqube_Main" {
   ami               = var.AMI
-  instance_type     = "t2.micro"
+  instance_type     = "t2.medium"
   key_name          = aws_key_pair.sonarqube_key.key_name
   availability_zone = "us-west-1b"
   security_groups   = [aws_security_group.sonarqube_security.id]

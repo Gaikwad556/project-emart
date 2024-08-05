@@ -5,7 +5,7 @@ resource "aws_key_pair" "jenkins_key" {
 
 resource "aws_instance" "Jenkins_Main" {
   ami               = var.AMI
-  instance_type     = "t2.micro"
+  instance_type     = "t2.small"
   key_name          = aws_key_pair.jenkins_key.key_name
   availability_zone = "us-west-1c"
   security_groups   = [aws_security_group.jenkins_security.id]

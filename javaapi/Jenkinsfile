@@ -1,0 +1,45 @@
+pipeline {
+    agent any
+    tools {
+        maven 'mvn'
+        jdk 'jdk11'
+    }
+
+    stages {
+        stage ("git clone") {
+            steps {
+                git branch: 'main', url:'https://github.com/Gaikwad556/project-emart.git'
+            }
+        }
+        stage (" mvn install") {
+            steps {
+                sh " cd javaapi && mvn install -DskipTests"
+            }
+        }
+
+        stage('SonarQube analysis') {
+            environment {
+                scannerHome = tool 'sonar4.7'
+            }
+            steps {
+                    withSonarQubeEnv('sonar') { // If you have configured more than one global server connection, you can specify its name
+                    sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=emart \
+                    -Dsonar.projectName=emart-repo \
+                    -Dsonar.projectVersion=1.0 \
+                    -Dsonar.java.binaries=javaapi/target/test-classes/com/springwork/bookwork/ \
+                    -Dsonar.junit.reportsPath=javaapi/target/surefire-reports/'''
+                }
+            }               
+        } 
+
+        stage("Quality Gate") {
+            steps {
+                timeout(time: 1, unit: 'MINUTES') {
+                    // Parameter indicates whether to set pipeline to UNSTABLE if Quality Gate fails
+                    // true = set pipeline to UNSTABLE, false = don't
+                    waitForQualityGate abortPipeline: true
+                }
+            }
+        }     
+    }
+}
