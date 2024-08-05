@@ -10,7 +10,7 @@ pipeline {
         aws_creds = "ecr:us-west-1:awscreds"
         image_name = "ssgaikwad/emartnginx"
         docker_hub = "dockerhub"
-        registry_url = "891377177922.dkr.ecr.us-west-1.amazonaws.com/ssgaikwad/vprotomcatapp"
+        registry_url = "891377177922.dkr.ecr.us-west-1.amazonaws.com/ssgaikwad/emartnginx"
         project_url = "https://891377177922.dkr.ecr.us-west-1.amazonaws.com"
     }
 
