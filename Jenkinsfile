@@ -33,8 +33,8 @@ pipeline {
         stage ("push image to docker "){
             steps {
                 script {
-                    docker.withRegistry(project_url, aws_creds) {
-                        dockerImage.push(":${BUILD_NUMBER}")
+                    docker.withRegistry(project_url,aws_creds) {
+                        dockerImage.push("$BUILD_NUMBER")
                         dockerImage.push("latest")
                     }
                 }
