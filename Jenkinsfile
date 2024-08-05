@@ -22,6 +22,27 @@ pipeline {
             }
         }
 
+        stage ("npm install") {
+            steps {
+                sh "cd client && rm -rf node_modules && npm cache clean --force && npm install"
+            }
+        } 
+
+        stage('SonarQube analysis') {
+            environment {
+                scannerHome = tool 'sonar4.7'
+            }
+            steps {
+                    withSonarQubeEnv('sonar') { // If you have configured more than one global server connection, you can specify its name
+                    sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=emart \
+                    -Dsonar.projectName=emart-repo-1 \
+                    -Dsonar.projectVersion=1.0 \
+                    -Dsonar.inclusions=client/src/**/*.js,src/**/*.ts \
+                    -Dsonar.exclusions=client/**/test/**,**/mock/**'''
+                }
+            }               
+        } 
+
         stage ("docker build image "){
             steps {
                 script {
