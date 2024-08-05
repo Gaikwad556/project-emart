@@ -32,19 +32,19 @@ pipeline {
         stage ("push image to docker "){
             steps {
                 script {
-                    docker.withRegistry('',docker_hub) {
-                        dockerImage.push("$BUILD_NUMBER")
+                    docker.withRegistry(project_url,aws_creds) {
+                        dockerImage.push(":$BUILD_NUMBER")
                         dockerImage.push("latest")
                     }
                 }
             }
         }
 
-        stage ("helm install"){
-            agent {label 'KOPS'}
-            steps {              
-                sh "helm upgrade --install --force emart-stack helm/emartcharts --namespace prod --set appimage=$image_name:$BUILD_NUMBER"             
-            }
-        }
+        // stage ("helm install"){
+        //     agent {label 'KOPS'}
+        //     steps {              
+        //         sh "helm upgrade --install --force emart-stack helm/emartcharts --namespace prod --set appimage=$image_name:$BUILD_NUMBER"             
+        //     }
+        // }
     }
 }
