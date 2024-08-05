@@ -28,6 +28,17 @@ pipeline {
             }
         } 
 
+        stage ("git clone") {
+            steps {
+                git branch: 'main', url:'https://github.com/Gaikwad556/project-emart.git'
+            }
+        }
+        stage (" mvn install") {
+            steps {
+                sh " cd javaapi && mvn install -DskipTests"
+            }
+        }
+
         stage('SonarQube analysis') {
             environment {
                 scannerHome = tool 'sonar4.7'
@@ -38,7 +49,9 @@ pipeline {
                     -Dsonar.projectName=emart-repo-1 \
                     -Dsonar.projectVersion=1.0 \
                     -Dsonar.inclusions=client/src/**/*.js,src/**/*.ts \
-                    -Dsonar.exclusions=client/**/test/**,**/mock/**'''
+                    -Dsonar.exclusions=client/**/test/**,**/mock/** \
+                    -Dsonar.java.binaries=javaapi/target/test-classes/com/springwork/bookwork/ \
+                    -Dsonar.junit.reportsPath=javaapi/target/surefire-reports/'''
                 }
             }               
         } 
