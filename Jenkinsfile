@@ -21,11 +21,11 @@ pipeline {
                 git branch:'main',url:'https://github.com/Gaikwad556/project-emart.git'
             }
         }
-        
+
         stage ("docker build image "){
             steps {
                 script {
-                    dockerImage = docker.build("$image_name:$BUILD_NUMBER")
+                    dockerImage = docker.build("${image_name}:${BUILD_NUMBER}")
                 }
             }
         }
@@ -33,8 +33,8 @@ pipeline {
         stage ("push image to docker "){
             steps {
                 script {
-                    docker.withRegistry(project_url,aws_creds) {
-                        dockerImage.push(":$BUILD_NUMBER")
+                    docker.withRegistry(project_url, aws_creds) {
+                        dockerImage.push(":${BUILD_NUMBER}")
                         dockerImage.push("latest")
                     }
                 }
