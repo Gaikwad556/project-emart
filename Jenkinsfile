@@ -27,7 +27,7 @@ pipeline {
                 sh "cd client && rm -rf node_modules && npm cache clean --force && npm install"
             }
         } 
-        
+
         stage (" mvn install") {
             steps {
                 sh " cd javaapi && mvn install -DskipTests"
@@ -43,8 +43,6 @@ pipeline {
                     sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=emart \
                     -Dsonar.projectName=emart-repo-1 \
                     -Dsonar.projectVersion=1.0 \
-                    -Dsonar.inclusions=client/src/**/*.js,src/**/*.ts \
-                    -Dsonar.exclusions=client/**/test/**,**/mock/** \
                     -Dsonar.java.binaries=javaapi/target/test-classes/com/springwork/bookwork/ \
                     -Dsonar.junit.reportsPath=javaapi/target/surefire-reports/'''
                 }
