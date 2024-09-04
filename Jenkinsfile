@@ -78,6 +78,12 @@ pipeline {
             }
         }
 
+        stage("REMOVE IMAGE") {
+            steps {
+                sh "docker rmi $registry:$BUILD_NUMBER"
+            }
+        }
+
         stage ("helm install"){
             agent {label 'KOPS'}
             steps {              
